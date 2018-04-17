@@ -21,7 +21,7 @@ connection.connect(function(err){
 function makeTable(){
     connection.query("SELECT * FROM products", function(err,res){
         for(var i=0; i<res.length; i++){
-            console.log(res[i].itemid + " || " + res[i].production+ " || " + res[i].departmentname+
+            console.log(res[i].itemid + " || " + res[i].productname+ " || " + res[i].departmentname+
             " || " +res[i].price+" || "+res[i].stockquantity+"\n");
        
         }
@@ -33,10 +33,10 @@ function promptCustomer (res) {
     inquirer.prompt([{
         type:"input",
         name: "choice",
-        message:"What would you like to purchase? [Quit with Q]"
+        message:"What would you like to purchase? [Quit with X]"
     }]).then(function(answer){
         var correct = false;
-        if(answer.choice.toUpperCase()=="Q"){
+        if(answer.choice.toUpperCase()=="X"){
             process.exist();
         }
         for(var i=0;i<res.length;i++){
